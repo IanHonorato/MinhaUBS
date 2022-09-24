@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="img/hospital.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+   
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- CSS do projeto -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>MinhaUBS</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary-color" id="navbar">
+        <div class="container py-3">
+            <a href="index.html" class="navbar-brand primary-color">
+                <img src="img/MinhaUBS.png" alt="Logo Minha UBS">
+            </a>
+            <button 
+                class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbar-itens" 
+                aria-controls="navbar-itens"
+                aria-expanded="false"
+                aria-label="Toggle navegation">
+                    <i class="bi bi-list"></i>
+            </button>
+          
+<!--Barra de Menus-->
+            <Div class="collapse navbar-collapse" id="navbar-itens">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"/>
+                    <li class="nav-item">
+                        Olá Profissional!
+                    </li>
+                </ul>
+            </Div>
+        </Div>
+    </nav>
+    <!--Serviços-->
+    <div  class="cadastro">
+        <h3>Divulgar serviços da minha UBS</h3>
+        <div  class="botao_incluir">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cadastrar" data-whatever="@getbootstrap" id="botao_incluir">Incluir</button>
+        </div>
+  <!--Listagem de serviços divulgados-->
+        <table class="table table-striped">
+            <thead>
+                <th scope="col">Zona</th>
+                <th scope="col">Unidade</th>
+                <th scope="col">Endereços</th>
+                <th>Horário</th>
+                <th scope="col">Serviços</th>
+                <th scope="col">Maps</th>
+                <th scope="col">Ações</th>
+                <th scope="col"></th>
+            </thead>
+            <tbory>
+                <tr>
+                    <td scope="row">DISTRITO SANITÁRIO NORTE I</td>
+                    <td>UBS</td>
+                    <td>Pajuçara: Rua Maracaí, S/N, Conjunto Pajuçara</td>
+                    <td>Segunda à sexta das 07:00 às 16:00</td>
+                    <td>Ortopedista</td>
+                    <td><a href="https://goo.gl/maps/GKPQ92KE2EUEDPUW7" target="_blank"><img src="img/hospital.png" alt="Ir Google Maps" class=""></a></td>
+                    <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar" data-whatever="@getbootstrap"><img src="img/outline_edit_note_white_24dp.png" alt="Editar" class=""></button></td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remover" data-whatever="@getbootstrap"><img src="img/outline_remove_circle_white_24dp.png" alt="Editar" class=""></button></td>
+                </tr>
+                <tr>
+                    <td scope="row">DISTRITO NORTE II</td>
+                    <td>USF</td>
+                    <td>Vale Dourado: Rua Irmã Vitória, N° 02, Igapó</td>
+                    <td>Segunda à sexta das 07:00 às 16:00</td>
+                    <td>Ortopedista</td>
+                    <td><a href="https://goo.gl/maps/GKPQ92KE2EUEDPUW7" class="" target="_blank"><img src="img/hospital.png" alt="Ir Google Maps" class=""></a></td>
+                    <td><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editar" data-whatever="@getbootstrap"><img src="img/outline_edit_note_white_24dp.png" alt="Editar" class=""></button></td>
+                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#remover" data-whatever="@getbootstrap"><img src="img/outline_remove_circle_white_24dp.png" alt="Editar" class=""></button></td>
+                </tr>
+            </tbory>
+        </table>  
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="container-fluid bg-dark-color" id="footer">
+        <div class="container">
+            <div class="col-12" id="footer-bottom">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-3">
+                        <p class="secondary-color">MinhaUBS &copy; 2022</p>
+                    </div>
+                    <div class="col-4" id="social-icons">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-twitter"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </footer>
+
+    <!-- MODAL CADASTRAR-->
+    <div class="modal fade" id="cadastrar" tabindex="-1" role="dialog" aria-labelledby="cadastrar" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cadastrar">Cadastrar serviço</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Zona:</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option value="DS">DISTRITO SANITÁRIO NORTE I</option>
+                              <option value="DN">DISTRITO NORTE II</option>
+                              <option value="DU">DISTRITO SUL</option>
+                              <option value="DL">DISTRITO LESTE</option>
+                              <option value="DO">DISTRITO OESTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Unidade:</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                              <option>UBS - Pajuçara: Rua Maracaí, S/N, Conjunto Pajuçara</option>
+                              <option>USF - Nova Natal : Rua Do Pastoril, Nova Natal, Lagoa Azul</option>
+                              <option>USF - Redinha: Rua Do Campo, S/N , Redinha</option>
+                              <option>USF - Nordelândia: Rua José Da Silva, S/N, Lagoa Azul</option>
+                              <option>USF - Gramoré: Avenida Guaratinguetá S/N, Lagoa Azul</option>
+                            </select>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                            <label class="form-check-label" for="inlineRadio1">Serviços</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                            <label class="form-check-label" for="inlineRadio2">Vacinas</label>
+                          </div>                      
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Descrição:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL EDITAR-->
+     <div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar serviço</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Zona:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option value="DS">DISTRITO SANITÁRIO NORTE I</option>
+                                  <option value="DN">DISTRITO NORTE II</option>
+                                  <option value="DU">DISTRITO SUL</option>
+                                  <option value="DL">DISTRITO LESTE</option>
+                                  <option value="DO">DISTRITO OESTE</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Unidade:</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>UBS - Pajuçara: Rua Maracaí, S/N, Conjunto Pajuçara</option>
+                                  <option>USF - Nova Natal : Rua Do Pastoril, Nova Natal, Lagoa Azul</option>
+                                  <option>USF - Redinha: Rua Do Campo, S/N , Redinha</option>
+                                  <option>USF - Nordelândia: Rua José Da Silva, S/N, Lagoa Azul</option>
+                                  <option>USF - Gramoré: Avenida Guaratinguetá S/N, Lagoa Azul</option>
+                                </select>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Serviços</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Vacinas</label>
+                              </div>                      
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Descrição:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- MODAL remover-->
+    <div class="modal fade" id="remover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Remover serviço</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <p>Deseja realmente remover esse serviço?</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+  </html>
