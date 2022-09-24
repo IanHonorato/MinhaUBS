@@ -30,6 +30,11 @@
    border-bottom: 1px solid rgb(42, 188, 12) ;
   }
 
+#navbar {
+   border-bottom: 1px solid rgb(208, 209, 208) ;
+   height: 4em;
+ }
+
 #navbar-brand {
     display: flex;
 }
@@ -59,6 +64,7 @@
   padding:12em;
   text-align: center;
   background: url("../img/banner.png") no-repeat;
+  background-position: center;
   width: auto;
   height: 400px;
 }
@@ -73,9 +79,18 @@
   padding: 3em;
 }
 
+.cadastro{
+  padding: 10em 5em;
+}
+
+.botao_incluir{
+  text-align: right;
+  margin-bottom: 1em;
+}
+
 /* FOOTER */
 #footer {
-    padding: 3em 2em;
+    padding: 2em 2em;
   }
     
 #news-container,
