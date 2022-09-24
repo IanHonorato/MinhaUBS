@@ -1,0 +1,143 @@
+*{  
+    font-family: 'lato', sans-serif;
+}
+
+.bg-primary-color {
+    background-color:#FFFFFF;
+}
+
+.bg-secondary-color {
+    background-color:#ECE8EA;
+}
+
+.bg-dark-color {
+    background-color:#050505;
+}
+
+.primary-color {
+    color:#050505;
+}
+
+.secondary-color {
+    color:#7A7A7A;
+}
+
+#navbar a:hover {
+   color:rgb(42, 188, 12);
+}
+
+#navbar a:active {
+   border-bottom: 1px solid rgb(42, 188, 12) ;
+  }
+
+#navbar-brand {
+    display: flex;
+}
+
+#navbar-brand-img {
+    width: 40px;   
+}
+
+#navbar-brand span  {
+    font-weight: 700;
+    font-size: 1.5em;
+    margin-left: 0.5em;
+}
+
+#navbar-itens .navbar-nav {
+    display: flex;
+    justify-content:right;
+    width: 100%;
+}
+
+#navbar-itens .nav-item {
+    margin: 0 1em;
+}
+
+/* BUSCADOR */
+.busca{
+  padding:12em;
+  text-align: center;
+  background: url("../img/banner.png") no-repeat;
+  width: auto;
+  height: 400px;
+}
+
+.sobre{
+  padding:12em;
+  width: 100%;
+}
+
+/* SERVICOS */
+.servico{
+  padding: 3em;
+}
+
+/* FOOTER */
+#footer {
+    padding: 3em 2em;
+  }
+    
+#news-container,
+#contact-container,
+#links-container {
+    padding: 0;
+    border: 0;
+    margin-bottom: 2em;
+}
+  
+#footer-details h4 {
+  color: #fff;
+  margin-bottom: 1.5em;
+}
+  
+#links-container li {
+  margin-bottom: 0.5em;
+}
+  
+#links-container a {
+  text-decoration: none;
+}
+  
+#links-container a:hover {
+  color: rgb(42, 188, 12);
+}
+  
+#footer-bottom {
+  border-top: 1px solid #7a7a7a;
+  padding-top: 2em;
+}
+  
+#footer-bottom i {
+  color: #ffffff;
+}
+
+#contact-container {
+  padding: 0 2em;
+  border-left: 1px solid #7a7a7a;
+  border-right: 1px solid #7a7a7a;
+}
+
+#contact-container {
+  padding: 0 2em;
+  border-left: 1px solid #7a7a7a;
+  border-right: 1px solid #7a7a7a;
+}
+
+#links-container {
+  padding-left: 2em;
+}
+
+#social-icons {
+   text-align: right;
+}
+  
+#social-icons i {
+    margin-right: 1em;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+#social-icons i:hover {
+  color: rgb(42, 188, 12);
+}
