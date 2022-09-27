@@ -5,7 +5,7 @@ Create table unidade
     nome varchar(200),
    	endereco varchar(100),
 	localizacao varchar(50),
-	horario_funcionamento(200),
+	horario_funcionamento varchar(200),
 	ativa bool
 )
 
