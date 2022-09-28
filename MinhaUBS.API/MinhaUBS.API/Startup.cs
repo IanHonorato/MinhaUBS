@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MinhaUBS.API.Data;
+using MinhaUBS.API.Interfaces;
+using MinhaUBS.API.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +39,8 @@ namespace MinhaUBS.API
             services.AddDbContext<MinhaUBSContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("MinhaUBSContext"), builder =>
                         builder.MigrationsAssembly("MinhaUBS.API")));
+
+            services.AddScoped<IUnidadeService, UnidadeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
