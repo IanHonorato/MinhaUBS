@@ -1,4 +1,5 @@
-﻿using MinhaUBS.API.Models;
+﻿using MinhaUBS.API.DTO;
+using MinhaUBS.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

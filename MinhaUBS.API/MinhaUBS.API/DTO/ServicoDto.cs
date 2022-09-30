@@ -1,10 +1,10 @@
 ﻿namespace MinhaUBS.API.DTO
 {
-    public class VacinaDto
+    public class ServicoDto
     {
 
     }
-    public class VacinaUpdate
+    public class ServicoUpdate
     {
 
     }
