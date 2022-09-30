@@ -17,29 +17,61 @@ namespace MinhaUBS.API.Services
             _context = context;
         }
 
-        public Task<bool> CreateFuncionario(FuncionarioDto funcionarioDto)
+        public async Task<bool> CreateFuncionario(FuncionarioDto funcionarioDto)
         {
-            throw new NotImplementedException();
+            Funcionario funcionario = new Funcionario(funcionarioDto.ID_Unidade, funcionarioDto.Nome, funcionarioDto.Login, funcionarioDto.Senha, funcionarioDto.Especialidade);
+            _context.Add(funcionario);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task DeleteFuncionario(int idFuncionario)
+        public async Task DeleteFuncionario(int idFuncionario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var obj = await _context.Funcionario.FindAsync(idFuncionario);
+                _context.Funcionario.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new Exception("Não é possível deletar");
+            }
         }
 
-        public Task<List<Funcionario>> GetFuncionarios()
+        public async Task<List<Funcionario>> GetFuncionarios()
         {
-            throw new NotImplementedException();
+            return await _context.Funcionario.ToListAsync();
         }
 
-        public Task<Funcionario> GetFuncionarioByID(int idFuncionario)
+        public async Task<Funcionario> GetFuncionarioByID(int idFuncionario)
         {
-            throw new NotImplementedException();
+            var obj = await _context.Funcionario.FindAsync(idFuncionario);
+            return obj;
         }
 
-        public Task UpdateFuncionario(FuncionarioUpdate request)
+        public async Task UpdateFuncionario(FuncionarioUpdate request)
         {
-            throw new NotImplementedException();
+            bool hasAny = await _context.Funcionario.AnyAsync(x => x.ID_Funcionario == request.ID_Funcionario);
+            if (!hasAny)
+                throw new Exception("ID dessa unidade não existe");
+            try
+            {
+                Funcionario funcionario = await _context.Funcionario.FindAsync(request.ID_Funcionario);
+                funcionario.Nome = request.Nome;
+                funcionario.ID_Unidade = request.ID_Unidade;
+                funcionario.Login = request.Login;
+                funcionario.Senha = request.Senha;
+                funcionario.Especialidade = request.Especialidade;
+
+                _context.Update(funcionario);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

@@ -41,6 +41,9 @@ namespace MinhaUBS.API
                         builder.MigrationsAssembly("MinhaUBS.API")));
 
             services.AddScoped<IUnidadeService, UnidadeService>();
+            services.AddScoped<IVacinaService, VacinaService>();
+            services.AddScoped<IServicoService, ServicoService>();
+            services.AddScoped<IFuncionarioService, FuncionarioService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

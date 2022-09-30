@@ -17,29 +17,57 @@ namespace MinhaUBS.API.Services
             _context = context;
         }
 
-        public Task<bool> CreateVacina(VacinaDto unidadeDto)
+        public async Task<bool> CreateVacina(VacinaDto vacinaDto)
         {
-            throw new NotImplementedException();
+            Vacina vacina = new Vacina(vacinaDto.Nome);
+            _context.Add(vacina);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task DeleteVacina(int idVacina)
+        public async Task DeleteVacina(int idVacina)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var obj = await _context.Vacina.FindAsync(idVacina);
+                _context.Vacina.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new Exception("Não é possível deletar");
+            }
         }
 
-        public Task<List<Vacina>> GetVacinas()
+        public async Task<List<Vacina>> GetVacinas()
         {
-            throw new NotImplementedException();
+            return await _context.Vacina.ToListAsync();
         }
 
-        public Task<Vacina> GetVacinasByID(int idVacina)
+        public async Task<Vacina> GetVacinasByID(int idVacina)
         {
-            throw new NotImplementedException();
+            var obj = await _context.Vacina.FindAsync(idVacina);
+            return obj;
         }
 
-        public Task UpdateVacina(VacinaUpdate request)
+        public async Task UpdateVacina(VacinaUpdate request)
         {
-            throw new NotImplementedException();
+            bool hasAny = await _context.Vacina.AnyAsync(x => x.ID_Vacina == request.ID_Vacina);
+            if (!hasAny)
+                throw new Exception("ID dessa unidade não existe");
+            try
+            {
+                Vacina vacina = await _context.Vacina.FindAsync(request.ID_Vacina);
+                vacina.Nome = request.Nome;
+                
+                _context.Update(vacina);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

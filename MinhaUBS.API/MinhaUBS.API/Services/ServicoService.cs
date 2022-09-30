@@ -17,29 +17,57 @@ namespace MinhaUBS.API.Services
             _context = context;
         }
 
-        public Task<bool> CreateServico(ServicoDto servicoDto)
+        public async Task<bool> CreateServico(ServicoDto servicoDto)
         {
-            throw new NotImplementedException();
+            Servico servico = new Servico(servicoDto.Nome);
+            _context.Add(servico);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
-        public Task DeleteServico(int idServico)
+        public async Task DeleteServico(int idServico)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var obj = await _context.Servico.FindAsync(idServico);
+                _context.Servico.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException e)
+            {
+                throw new Exception("Não é possível deletar");
+            }
         }
 
-        public Task<List<Servico>> GetServicos()
+        public async Task<List<Servico>> GetServicos()
         {
-            throw new NotImplementedException();
+            return await _context.Servico.ToListAsync();
         }
 
-        public Task<Servico> GetServicoByID(int idServico)
+        public async Task<Servico> GetServicoByID(int idServico)
         {
-            throw new NotImplementedException();
+            var obj = await _context.Servico.FindAsync(idServico);
+            return obj;
         }
 
-        public Task UpdateServico(ServicoUpdate request)
+        public async Task UpdateServico(ServicoUpdate request)
         {
-            throw new NotImplementedException();
+            bool hasAny = await _context.Servico.AnyAsync(x => x.ID_Servico == request.ID_Servico);
+            if (!hasAny)
+                throw new Exception("ID dessa unidade não existe");
+            try
+            {
+                Servico servico = await _context.Servico.FindAsync(request.ID_Servico);
+                servico.Nome = request.Nome;
+
+                _context.Update(servico);
+                await _context.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
