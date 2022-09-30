@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MinhaUBS.API.DTO
+﻿namespace MinhaUBS.API.DTO
 {
     public class UnidadeDto
     {
