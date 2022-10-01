@@ -19,7 +19,13 @@ namespace MinhaUBS.API.Services
 
         public async Task<bool> CreateFuncionario(FuncionarioDto funcionarioDto)
         {
-            Funcionario funcionario = new Funcionario(funcionarioDto.ID_Unidade, funcionarioDto.Nome, funcionarioDto.Login, funcionarioDto.Senha, funcionarioDto.Especialidade);
+            bool hasAny = await _context.Unidade.AnyAsync(x => x.ID_Unidade == funcionarioDto.ID_Unidade);
+            if (!hasAny)
+                throw new Exception("ID dessa unidade não existe");
+            
+            Unidade unidade = await _context.Unidade.FindAsync(funcionarioDto.ID_Unidade);
+
+            Funcionario funcionario = new Funcionario(unidade, funcionarioDto.Nome, funcionarioDto.Login, funcionarioDto.Senha, funcionarioDto.Especialidade);
             _context.Add(funcionario);
             await _context.SaveChangesAsync();
             return true;
@@ -52,14 +58,20 @@ namespace MinhaUBS.API.Services
 
         public async Task UpdateFuncionario(FuncionarioUpdate request)
         {
-            bool hasAny = await _context.Funcionario.AnyAsync(x => x.ID_Funcionario == request.ID_Funcionario);
-            if (!hasAny)
+            bool hasFuncionario = await _context.Funcionario.AnyAsync(x => x.ID_Funcionario == request.ID_Funcionario);
+            if (!hasFuncionario)
+                throw new Exception("ID desse funcionário não existe");
+
+            bool hasUnidade = await _context.Unidade.AnyAsync(x => x.ID_Unidade == request.ID_Unidade);
+            if (!hasUnidade)
                 throw new Exception("ID dessa unidade não existe");
             try
             {
                 Funcionario funcionario = await _context.Funcionario.FindAsync(request.ID_Funcionario);
+                Unidade unidade = await _context.Unidade.FindAsync(request.ID_Unidade);
+                
                 funcionario.Nome = request.Nome;
-                funcionario.ID_Unidade = request.ID_Unidade;
+                funcionario.Unidade = unidade;
                 funcionario.Login = request.Login;
                 funcionario.Senha = request.Senha;
                 funcionario.Especialidade = request.Especialidade;

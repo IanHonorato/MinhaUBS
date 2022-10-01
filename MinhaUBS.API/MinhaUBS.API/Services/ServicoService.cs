@@ -54,7 +54,7 @@ namespace MinhaUBS.API.Services
         {
             bool hasAny = await _context.Servico.AnyAsync(x => x.ID_Servico == request.ID_Servico);
             if (!hasAny)
-                throw new Exception("ID dessa unidade não existe");
+                throw new Exception("ID desse serviço não existe");
             try
             {
                 Servico servico = await _context.Servico.FindAsync(request.ID_Servico);

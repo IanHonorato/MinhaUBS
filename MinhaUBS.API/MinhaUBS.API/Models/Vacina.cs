@@ -13,6 +13,7 @@ namespace MinhaUBS.API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_Vacina{ get; set; }
         public string Nome { get; set; }
+        public ICollection<Unidade> Unidades { get; set; }
         public Vacina()
         {
         }

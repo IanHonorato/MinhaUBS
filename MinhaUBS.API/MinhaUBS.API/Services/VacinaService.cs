@@ -54,7 +54,7 @@ namespace MinhaUBS.API.Services
         {
             bool hasAny = await _context.Vacina.AnyAsync(x => x.ID_Vacina == request.ID_Vacina);
             if (!hasAny)
-                throw new Exception("ID dessa unidade não existe");
+                throw new Exception("ID dessa vacina não existe");
             try
             {
                 Vacina vacina = await _context.Vacina.FindAsync(request.ID_Vacina);

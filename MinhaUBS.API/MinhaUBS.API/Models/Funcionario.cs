@@ -12,7 +12,7 @@ namespace MinhaUBS.API.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_Funcionario { get; set; }
-        public int ID_Unidade { get; set; }
+        public Unidade Unidade { get; set; }
         public string Nome { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
@@ -21,9 +21,9 @@ namespace MinhaUBS.API.Models
         {
         }
 
-        public Funcionario(int id_unidade, string nome, string login, string senha, string especialidade)
+        public Funcionario(Unidade unidade, string nome, string login, string senha, string especialidade)
         {
-            ID_Unidade = id_unidade;
+            Unidade = unidade;
             Nome = nome;
             Login = login;
             Senha = senha;
