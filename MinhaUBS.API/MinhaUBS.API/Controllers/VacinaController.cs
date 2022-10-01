@@ -54,5 +54,12 @@ namespace MinhaUBS.API.Controllers
         {
             await _vacinaService.DeleteVacina(idVacina);
         }
+
+        [HttpGet]
+        [Route("vacinas/{idVacinas}/unidades")]
+        public async Task GetUnidadesComVacina(int idVacina)
+        {
+            await _vacinaService.GetUnidadesComVacina(idVacina);
+        }
     }
 }

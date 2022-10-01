@@ -17,6 +17,42 @@ namespace MinhaUBS.API.Services
             _context = context;
         }
 
+        public async Task AdicionarServicoNaUnidade(int idUnidade, int idServico)
+        {
+            bool hasServico = await _context.Servico.AnyAsync(x => x.ID_Servico == idServico);
+            if (!hasServico)
+                throw new Exception("ID desse servico não existe");
+
+            bool hasUnidade = await _context.Unidade.AnyAsync(x => x.ID_Unidade == idUnidade);
+            if (!hasUnidade)
+                throw new Exception("ID dessa unidade não existe");
+
+            Servico servico = await _context.Servico.FindAsync(idServico);
+            Unidade unidade = await _context.Unidade.FindAsync(idUnidade);
+
+            unidade.AddServico(servico);
+            _context.Update(unidade);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AdicionarVacinaNaUnidade(int idUnidade, int idVacina)
+        {
+            bool hasVacina = await _context.Vacina.AnyAsync(x => x.ID_Vacina == idVacina);
+            if (!hasVacina)
+                throw new Exception("ID dessa vacina não existe");
+
+            bool hasUnidade = await _context.Unidade.AnyAsync(x => x.ID_Unidade == idUnidade);
+            if (!hasUnidade)
+                throw new Exception("ID dessa unidade não existe");
+
+            Vacina vacina = await _context.Vacina.FindAsync(idVacina);
+            Unidade unidade = await _context.Unidade.FindAsync(idUnidade);
+
+            unidade.AddVacina(vacina);
+            _context.Update(unidade);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<bool> CreateUnidade(UnidadeDto unidadeDto)
         {
             Unidade unidade = new Unidade(unidadeDto.Nome, unidadeDto.Endereco, unidadeDto.Localizacao, unidadeDto.Ativa);
@@ -39,15 +75,39 @@ namespace MinhaUBS.API.Services
             }
         }
 
+        public async Task<List<Funcionario>> GetFuncionariosNaUnidade(int idUnidade)
+        {
+            var obj = _context.Funcionario.Where(v => v.Unidade.ID_Unidade == idUnidade));
+            return await obj.ToListAsync();
+        }
+
+        public async Task<List<Servico>> GetServicosDaUnidade(int idUnidade)
+        {
+            var obj = _context.Servico.Where(x => x.Unidades.Any(v => v.ID_Unidade == idUnidade));
+            return await obj.ToListAsync();
+        }
+
         public async Task<List<Unidade>> GetUnidades()
         {
             return await _context.Unidade.ToListAsync();
+        }
+
+        public async Task<List<Unidade>> GetUnidadesAtivas()
+        {
+            var obj =  _context.Unidade.Where(x => x.Ativa == true);
+            return await obj.ToListAsync();
         }
 
         public async Task<Unidade> GetUnidadesByID(int idUnidade)
         {
             var obj = await _context.Unidade.FindAsync(idUnidade);
             return obj;
+        }
+
+        public async Task<List<Vacina>> GetVacinasDaUnidade(int idUnidade)
+        {
+            var obj = _context.Vacina.Where(x => x.Unidades.Any(v => v.ID_Unidade == idUnidade));
+            return await obj.ToListAsync();
         }
 
         public async Task UpdateUnidade(UnidadeUpdate request)

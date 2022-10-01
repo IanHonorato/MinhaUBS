@@ -38,6 +38,22 @@ namespace MinhaUBS.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("unidades/ativas")]
+        public async Task<ActionResult> GetUnidadesAtivas()
+        {
+            var result = await _unidadeService.GetUnidadesAtivas();
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("unidades/{idUnidade}/vacinas")]
+        public async Task<ActionResult> GetVacinasNaUnidade(int idUnidade)
+        {
+            var result = await _unidadeService.GetVacinasDaUnidade(idUnidade);
+            return Ok(result);
+        }
+
         [HttpPost]
         [Route("unidades")]
         public async Task<ActionResult> CreateUnidade(UnidadeDto request)
@@ -58,6 +74,20 @@ namespace MinhaUBS.API.Controllers
         public async Task CreateUnidade(int idUnidade)
         {
             await _unidadeService.DeleteUnidade(idUnidade);
+        }
+
+        [HttpPost]
+        [Route("unidades/{idUnidade}/vacina/{idVacina}")]
+        public async Task AdicionarVacinaNaUnidade(int idUnidade, int idVacina)
+        {
+            await _unidadeService.AdicionarVacinaNaUnidade(idUnidade, idVacina);
+        }
+
+        [HttpPost]
+        [Route("unidades/{idUnidade}/servico/{idServico}")]
+        public async Task AdicionarServicoNaUnidade(int idUnidade, int idServico)
+        {
+            await _unidadeService.AdicionarServicoNaUnidade(idUnidade, idServico);
         }
     }
 }

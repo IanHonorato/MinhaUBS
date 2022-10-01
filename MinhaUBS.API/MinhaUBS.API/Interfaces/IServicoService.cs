@@ -14,5 +14,6 @@ namespace MinhaUBS.API.Interfaces
         Task<bool> CreateServico(ServicoDto servicoDto);
         Task UpdateServico(ServicoUpdate request);
         Task DeleteServico(int idServico);
+        Task<List<Unidade>> GetUnidadesComServico(int idServico);
     }
 }

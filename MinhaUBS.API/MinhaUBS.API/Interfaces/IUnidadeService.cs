@@ -14,5 +14,11 @@ namespace MinhaUBS.API.Interfaces
         Task<bool> CreateUnidade(UnidadeDto unidadeDto);
         Task UpdateUnidade(UnidadeUpdate request);
         Task DeleteUnidade(int idUnidade);
+        Task AdicionarVacinaNaUnidade(int idUnidade, int idVacina);
+        Task AdicionarServicoNaUnidade(int idUnidade, int idServico);
+        Task<List<Unidade>> GetUnidadesAtivas();
+        Task<List<Vacina>> GetVacinasDaUnidade(int idUnidade);
+        Task<List<Servico>> GetServicosDaUnidade(int idUnidade);
+        Task<List<Funcionario>> GetFuncionariosNaUnidade(int idUnidade);
     }
 }

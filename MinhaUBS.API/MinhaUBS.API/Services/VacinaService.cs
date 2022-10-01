@@ -39,6 +39,12 @@ namespace MinhaUBS.API.Services
             }
         }
 
+        public async Task<List<Unidade>> GetUnidadesComVacina(int idVacina)
+        {
+            var obj = _context.Unidade.Where(x => x.Vacinas.Any(v => v.ID_Vacina == idVacina));
+            return await obj.ToListAsync();
+        }
+
         public async Task<List<Vacina>> GetVacinas()
         {
             return await _context.Vacina.ToListAsync();

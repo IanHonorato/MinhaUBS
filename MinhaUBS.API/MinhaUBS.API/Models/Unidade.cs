@@ -18,6 +18,7 @@ namespace MinhaUBS.API.Models
         public bool Ativa { get; set; }
         public ICollection<Vacina> Vacinas { get; set; } = new List<Vacina>();
         public ICollection<Servico> Servicos { get; set; } = new List<Servico>();
+        public ICollection<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
         public Unidade()
         {
         }
@@ -38,6 +39,11 @@ namespace MinhaUBS.API.Models
         public void AddServico(Servico servico)
         {
             Servicos.Add(servico);
+        }
+
+        public void AddFuncionario(Funcionario funcionario)
+        {
+            Funcionarios.Add(funcionario);
         }
     }
 }

@@ -69,5 +69,11 @@ namespace MinhaUBS.API.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public async Task<List<Unidade>> GetUnidadesComServico(int idServico)
+        {
+            var obj = _context.Unidade.Where(x => x.Servicos.Any(v => v.ID_Servico == idServico));
+            return await obj.ToListAsync();
+        }
     }
 }

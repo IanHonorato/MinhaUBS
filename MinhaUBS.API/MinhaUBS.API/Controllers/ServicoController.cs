@@ -55,5 +55,12 @@ namespace MinhaUBS.API.Controllers
         {
             await _servicoService.DeleteServico(idServico);
         }
+
+        [HttpGet]
+        [Route("servicos/{idServico}/unidades")]
+        public async Task GetUnidadesComServico(int idServico)
+        {
+            await _servicoService.GetUnidadesComServico(idServico);
+        }
     }
 }

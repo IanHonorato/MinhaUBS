@@ -14,5 +14,6 @@ namespace MinhaUBS.API.Interfaces
         Task<bool> CreateVacina(VacinaDto vacinaDto);
         Task UpdateVacina(VacinaUpdate request);
         Task DeleteVacina(int idVacina);
+        Task<List<Unidade>> GetUnidadesComVacina(int idVacina);
     }
 }
