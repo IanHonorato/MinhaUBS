@@ -77,7 +77,7 @@ namespace MinhaUBS.API.Services
 
         public async Task<List<Funcionario>> GetFuncionariosNaUnidade(int idUnidade)
         {
-            var obj = _context.Funcionario.Where(v => v.Unidade.ID_Unidade == idUnidade));
+            var obj = _context.Funcionario.Where(v => v.Unidade.ID_Unidade == idUnidade);
             return await obj.ToListAsync();
         }
 
