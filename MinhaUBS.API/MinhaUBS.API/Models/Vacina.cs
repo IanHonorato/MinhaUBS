@@ -13,7 +13,7 @@ namespace MinhaUBS.API.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID_Vacina{ get; set; }
         public string Nome { get; set; }
-        public ICollection<Unidade> Unidades { get; set; }
+        public ICollection<Unidade> Unidades { get; set; } = new List<Unidade>();
         public Vacina()
         {
         }
@@ -21,6 +21,11 @@ namespace MinhaUBS.API.Models
         public Vacina(string nome)
         {
             Nome = nome;
+        }
+
+        public void AddUnidade(Unidade unidade)
+        {
+            Unidades.Add(unidade);
         }
     }
 }

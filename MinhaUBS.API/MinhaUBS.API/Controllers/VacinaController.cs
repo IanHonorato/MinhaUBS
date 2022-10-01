@@ -57,9 +57,10 @@ namespace MinhaUBS.API.Controllers
 
         [HttpGet]
         [Route("vacinas/{idVacinas}/unidades")]
-        public async Task GetUnidadesComVacina(int idVacina)
+        public async Task<ActionResult> GetUnidadesComVacina(int idVacina)
         {
-            await _vacinaService.GetUnidadesComVacina(idVacina);
+            var result = await _vacinaService.GetUnidadesComVacina(idVacina);
+            return Ok(result);
         }
     }
 }

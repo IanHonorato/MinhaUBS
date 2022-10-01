@@ -47,6 +47,14 @@ namespace MinhaUBS.API.Controllers
         }
 
         [HttpGet]
+        [Route("unidades/{idUnidade}/funcionarios")]
+        public async Task<ActionResult> GetFuncionariosNaUnidade(int idUnidade)
+        {
+            var result = await _unidadeService.GetFuncionariosNaUnidade(idUnidade);
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("unidades/{idUnidade}/vacinas")]
         public async Task<ActionResult> GetVacinasNaUnidade(int idUnidade)
         {

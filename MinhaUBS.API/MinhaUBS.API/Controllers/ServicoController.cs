@@ -58,9 +58,10 @@ namespace MinhaUBS.API.Controllers
 
         [HttpGet]
         [Route("servicos/{idServico}/unidades")]
-        public async Task GetUnidadesComServico(int idServico)
+        public async Task<ActionResult> GetUnidadesComServico(int idServico)
         {
-            await _servicoService.GetUnidadesComServico(idServico);
+            var result = await _servicoService.GetUnidadesComServico(idServico);
+            return Ok(result);
         }
     }
 }

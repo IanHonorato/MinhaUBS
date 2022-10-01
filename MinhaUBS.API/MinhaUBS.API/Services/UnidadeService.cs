@@ -31,7 +31,8 @@ namespace MinhaUBS.API.Services
             Unidade unidade = await _context.Unidade.FindAsync(idUnidade);
 
             unidade.AddServico(servico);
-            _context.Update(unidade);
+            _context.UpdateRange(unidade);
+
             await _context.SaveChangesAsync();
         }
 
@@ -50,6 +51,7 @@ namespace MinhaUBS.API.Services
 
             unidade.AddVacina(vacina);
             _context.Update(unidade);
+
             await _context.SaveChangesAsync();
         }
 
